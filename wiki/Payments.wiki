@@ -12,6 +12,9 @@ Steps to setup
   * Update settings https://checkout.google.com/customer/gadget/inapp/settings.html
 
 = Account Info =
+
   * Google account: html5dino@gmail.com / hackathon
+
   * Seller Identifier: 12281803178705728308
+
   * Seller Secret: w3gaNEquu-6hntmHmKg7VA
