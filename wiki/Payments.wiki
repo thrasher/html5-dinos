@@ -11,3 +11,7 @@ Steps to setup
   * Signup https://checkout.google.com/inapppayments/
   * Update settings https://checkout.google.com/customer/gadget/inapp/settings.html
 
+= Account Info =
+  * Google account: html5dino@gmail.com / hackathon
+  * Secret: 
+  * Key: 
