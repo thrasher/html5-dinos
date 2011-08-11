@@ -13,5 +13,5 @@ Steps to setup
 
 = Account Info =
   * Google account: html5dino@gmail.com / hackathon
-  * Secret: 
-  * Key: 
+  * Seller Identifier: 12281803178705728308
+  * Seller Secret: w3gaNEquu-6hntmHmKg7VA
