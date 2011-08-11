@@ -19,6 +19,8 @@ Steps to setup
 
   * Google account: html5dino@gmail.com / hackathon
 
+== Sandbox ==
+
   * Seller Identifier: 12281803178705728308
 
-  * Seller Secret: w3gaNEquu-6hntmHmKg7VA
+  * Seller Secret: T18aYcJ2z138rI9IOSvN5Q
