@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 Hackathon - Dinos</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+        <link rel="stylesheet" href="../css/SpeechInputTest.css" type="text/css"/>
+    </head>
+
+    <body>
+        Click the mic below and say what do you want me to do?
+
+        <div id="inputControl"><input id="speechInput" class="micOnly" type="text" x-webkit-speech speech/></div>
+
+        <div id="feedback"></div>
+
+        <div id="debug">
+            Debug 
+            <div id="speechResults"></div>
+        </div>
+        
+        <script type="text/javascript" language="javascript"> 
+            
+            function initialize() {
+            
+                var getUrlVars = (function() {
+                    var vars;
+                    return function() {
+                        if(vars !== undefined) return vars;
+                        vars = {};
+                        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                            vars[key] = value;
+                        });
+                        return vars;
+                    }
+                })();
+            
+                var commands = ['jump', 'dance', 'kick', 'wag', 'speak'];
+                
+                var speechResults = document.getElementById('speechResults');
+                var feedback = document.getElementById('feedback');
+                
+                if (getUrlVars()['Debug'] != null) {
+                    document.getElementById('debug').classList.remove('hide');
+                }
+                else {
+                    document.getElementById('debug').classList.add('hide');
+                }
+                
+                document.getElementById("speechInput").addEventListener("webkitspeechchange", function(event) {
+
+                    speechResults.innerHTML = '';
+                    feedback.innerHTML = '';
+                
+                    if (event.results.length > 0) {
+                        var userCmd = event.results[0]['utterance'];
+                    
+                        feedback.innerHTML = 'Command : ' + userCmd ;
+                        feedback.innerHTML += ' and Confidence : ' +  event.results[0]['confidence'] * 100 + '%';
+                    
+                        for (var res in event.results) {
+                            speechResults.innerHTML += 'Utterance: ' + event.results[res]['utterance'];
+                            speechResults.innerHTML += '<br />Confidence: ' + event.results[res]['confidence'] + '<br /><br />';
+                        }
+                    
+                        // One of our commands
+                        if (commands.indexOf(userCmd) >= 0) {
+                            doAction(userCmd);
+                        }
+                        else {
+                            feedback.innerHTML += "<br /> I am not sure that I understand your command, could you retry?";
+                        }
+                    }
+                }, false);
+            }
+            
+            function doAction(command) {
+                
+                feedback.innerHTML += "<br /> Executing " + command + "…";
+                
+                switch(command) {
+                
+                    case 'jump':
+                        feedback.innerHTML += " jump done!";
+                        break;
+                    case 'wag':
+                        feedback.innerHTML += " wag done!";
+                        break;
+                    case 'dance':
+                        feedback.innerHTML += " dance done!";
+                        break;
+                    case 'kick':
+                        feedback.innerHTML += " kick done!";
+                        break;
+                    case 'speak':
+                        feedback.innerHTML += " speak done!";
+                        break;
+                    default:
+                        feedback.innerHTML += " default action done!";
+                        break;
+                        
+                }
+            }
+
+            initialize();
+        </script>
+    </body>
+</html>
