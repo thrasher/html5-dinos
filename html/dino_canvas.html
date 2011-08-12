@@ -1,0 +1,439 @@
+<html><head>
+        <meta name="google-site-verification" content="Xh5qKr8LDzJqOkdFeIuMJ3doWsblGzvSTU6qKIDkwXs" />
+        <link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../css/SpeechInputTest.css" type="text/css"/>
+        <style type="text/css">
+            body {
+                margin:0;
+                padding:0;
+            }
+            #popup_bg {
+                opacity: .7;
+                background: -moz-radial-gradient(circle, #888888, #000000);
+                background: -webkit-gradient(radial, center center, 0, center center, 460, from(#888888), to(#000000));
+                background: -webkit-radial-gradient(circle, #888888, #000000);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 100;
+            }
+            #popup {
+                border-radius: 5px;
+                border: 3px solid #ffff00;
+                background-color: #ffffff;
+                position:absolute;
+                width: auto;
+                height:auto;
+                z-index:101;
+                padding:5px;
+                -webkit-box-shadow: rgba(0, 0, 128, 0.246094) 8px 6px 3px;
+                text-align:center;
+            }
+            #kids_name {
+                font-family: 'Paytone One', sans-serif;
+                margin:0;
+                padding:2px;
+                font-size: 20px;
+                -webkit-text-fill-color: #00CC00;
+                -webkit-text-stroke-color: #000;
+                -webkit-text-stroke-width: .50px;
+            }
+            .link {
+                -webkit-text-fill-color: #00CCcc;
+                -webkit-text-stroke-color: #000;
+            }
+            .link:hover {
+                -webkit-text-fill-color: #cccc00;
+                -webkit-text-stroke-color: #000;
+            }
+            
+            .dino_leg {
+                background: url('http://www.howtohtml5.com/html5-dinos/images/leg1_colors.png');
+                position: absolute;
+                width:450px;
+                height:450px;
+            }
+            .dino_leg.red {
+                background-position: 0 0;
+            }
+            .dino_leg.green {
+                background-position: 0 -450px;
+            }
+            .dino_leg.purple {
+                background-position: 0 -900px;
+            }
+            .dino_leg.blue {
+                background-position: 0 -1350px;
+            }
+            .dino_leg.yellow {
+                background-position: 0 -1800px;
+            }
+            .dino_leg.pink {
+                background-position: 0 -2250px;
+            }
+            
+            .dino_arm {
+                background: url('http://www.howtohtml5.com/html5-dinos/images/arm_colors.png') 0 0 transparent no-repeat;
+                position: absolute;
+                width:150px;
+                height:150px;
+            }
+            .dino_arm.red {
+                background-position: 0 0;
+            }
+            .dino_arm.green {
+                background-position: 0 -150px;
+            }
+            .dino_arm.purple {
+                background-position: 0 -300px;
+            }
+            .dino_arm.blue {
+                background-position: 0 -450px;
+            }
+            .dino_arm.yellow {
+                background-position: 0 -600px;
+            }
+            .dino_arm.pink {
+                background-position: 0 -750px;
+            }
+            
+            .dino_body {
+                background: url('http://www.howtohtml5.com/html5-dinos/images/body1_colors.png');
+                position: absolute;
+                width:250px;
+                height:280px;
+            }
+            .dino_body.red {
+                background-position: 0 0;
+            }
+            .dino_body.green {
+                background-position: 0 -280px;
+            }
+            .dino_body.purple {
+                background-position: 0 -560px;
+            }
+            .dino_body.blue {
+                background-position: 0 -840px;
+            }
+            .dino_body.yellow {
+                background-position: 0 -1120px;
+            }
+            .dino_body.pink {
+                background-position: 0 -1400px;
+            }
+            
+            .dino_head {
+                background: url('http://www.howtohtml5.com/html5-dinos/images/head1_colors.png');
+                position: absolute;
+                width:250px;
+                height:250px;
+            }
+            .dino_head.red {
+                background-position: 0 0;
+            }
+            .dino_head.green {
+                background-position: 0 -250px;
+            }
+            .dino_head.purple {
+                background-position: 0 -500px;
+            }
+            .dino_head.blue {
+                background-position: 0 -750px;
+            }
+            .dino_head.yellow {
+                background-position: 0 -1000px;
+            }
+            .dino_head.pink {
+                background-position: 0 -1250px;
+            }
+            
+            .dino_tail {
+                background: url('http://www.howtohtml5.com/html5-dinos/images/tail1_colors.png');
+                position: absolute;
+                width:400px;
+                height:400px;
+            }
+            .dino_tail.red {
+                background-position: 0 0;
+            }
+            .dino_tail.green {
+                background-position: 0 -400px;
+            }
+            .dino_tail.purple {
+                background-position: 0 -800px;
+            }
+            .dino_tail.blue {
+                background-position: 0 -1200px;
+            }
+            .dino_tail.yellow {
+                background-position: 0 -1600px;
+            }
+            .dino_tail.pink {
+                background-position: 0 -2000px;
+            }
+            @-webkit-keyframes bark {
+                from {
+                  -webkit-transform: rotate(-30deg);
+                }
+                to { 
+                  -webkit-transform: rotate(0deg);
+                }
+              }
+            @-webkit-keyframes kick {
+                from {
+                  -webkit-transform: rotate(-60deg);
+                }
+                to { 
+                  -webkit-transform: rotate(0deg);
+                }
+              }
+            @-webkit-keyframes wagtail {
+                from {
+                  -webkit-transform: rotate(0deg);
+                }
+                to { 
+                  -webkit-transform: rotate(-30deg);
+                }
+              }
+            @-webkit-keyframes rotate {
+                from {
+                  -webkit-transform: rotate(-60deg);
+                }
+                to { 
+                  -webkit-transform: rotate(60deg);
+                }
+              }
+            @-webkit-keyframes dance {
+                from {
+                  -webkit-transform: rotate(-160deg);
+                }
+                to { 
+                  -webkit-transform: rotate(360deg);
+                }
+              }
+            @-webkit-keyframes jump {
+                from {
+                  -webkit-transform: translateY(-100px);
+                }
+                to { 
+                  -webkit-transform: rotate(360deg);
+                }
+              }
+              .animate
+              {
+              -webkit-animation-name:             rotate; 
+              -webkit-animation-duration:         1s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              }
+              .animate2
+              {
+              -webkit-animation-name:             rotate2; 
+              -webkit-animation-duration:         1s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              }
+              .kicker
+              {
+              -webkit-animation-name:             kick; 
+              -webkit-animation-duration:         1s; 
+              -webkit-animation-iteration-count:  1;
+              -webkit-transition-timing-function: linear;
+              }
+              .wagger
+              {
+                -webkit-animation-direction: alternate;
+              -webkit-animation-name:             kick; 
+              -webkit-animation-duration:         .1s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              
+              }
+              .barker
+              {
+                -webkit-animation-direction: alternate;
+              -webkit-animation-name:             bark; 
+              -webkit-animation-duration:         .1s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              
+              }
+              .dancer
+              {
+                -webkit-animation-direction: alternate;
+              -webkit-animation-name:             dance; 
+              -webkit-animation-duration:         .5s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              
+              }
+              .jumper
+              {
+              -webkit-animation-name:             jump; 
+              -webkit-animation-duration:         .5s; 
+              -webkit-animation-iteration-count:  infinite;
+              -webkit-transition-timing-function: linear;
+              
+              }
+        </style>
+        <script type="text/javascript">
+            function init(){
+                var popup = document.getElementById('popup');
+                var popup_dim = {'width': popup.clientWidth, 'height' : popup.clientHeight}
+                popup.style.left = (window.innerWidth-popup_dim.width)/2+"px";
+                popup.style.top = (window.innerHeight-popup_dim.height)/2+"px";
+            }
+            function setKidsName(name){
+                document.getElementById('kids_name').innerHTML = "<div>Hello "+name+", Ready to Play? <span class='link' style='cursor:pointer;margin:0 5px;' onclick='hidePopup()'>Yes</span> <span class='link' style='cursor:pointer;margin:0 5px;' onclick='location.assign(\"http://www.google.com\")'>No</span></div>";
+            }
+            function hidePopup(){
+                document.getElementById('popup_bg').style.display="none";
+                document.getElementById('popup').style.display="none";
+                document.getElementById('popup').innerHTML ='';
+            }
+            function changeColor(elem,new_color){
+                var el = elem.classList;
+                for(i=0;i<el.length;i++){
+                    switch(el[i]){
+                        case 'red':
+                        case 'green':
+                        case 'purple':
+                        case 'blue':
+                        case 'yellow':
+                        case 'pink':
+                            el.remove(el[i]);
+                    }
+                }
+                el.add(new_color);
+            }
+            function changeAll(new_color){
+                changeColor(document.getElementById('dino_arm'),new_color);
+                changeColor(document.getElementById('dino_arm_back'),new_color);
+                changeColor(document.getElementById('dino_leg'),new_color);
+                changeColor(document.getElementById('dino_leg_back'),new_color);
+                changeColor(document.getElementById('dino_head'),new_color);
+                changeColor(document.getElementById('dino_body'),new_color);
+                changeColor(document.getElementById('dino_tail'),new_color);
+                
+            }
+            function makeKick(){
+                var el = document.getElementById('dino_leg').classList;
+                el.add('kicker');
+                setTimeout(function(){el.remove('kicker')},1000);
+            }
+            
+            function makeWag(){
+                var el = document.getElementById('dino_tail').classList;
+                el.add('wagger');
+                setTimeout(function(){el.remove('wagger')},3000);
+            }
+            
+            function makeSpeak(){
+                var el = document.getElementById('dino_head').classList;
+                el.add('barker');
+                setTimeout(function(){el.remove('barker')},1000);
+            }
+            function makeDance(){
+                setTimeout(function(){
+                    var el_back = document.getElementById('dino_arm_back').classList;
+                    el_back.add('dancer');
+                    setTimeout(function(){el_back.remove('dancer')},2000);
+                },500);
+                
+                var el = document.getElementById('dino_arm').classList;
+                el.add('dancer');
+                setTimeout(function(){el.remove('dancer')},2000);
+            }
+            function makeJump(){
+                var el_body = document.getElementById('dino_body').classList;
+                var el_tail = document.getElementById('dino_tail').classList;
+                var el_head = document.getElementById('dino_head').classList;
+                var el_leg = document.getElementById('dino_leg').classList;
+                var el_arm = document.getElementById('dino_arm').classList;
+                var el_leg_back = document.getElementById('dino_leg_back').classList;
+                var el_arm_back = document.getElementById('dino_arm_back').classList;
+                
+                el_body.add('jumper');
+                el_tail.add('jumper');
+                el_head.add('jumper');
+                el_leg.add('jumper');
+                el_arm.add('jumper');
+                el_leg_back.add('jumper');
+                el_arm_back.add('jumper');
+                
+                setTimeout(function(){el_body.remove('jumper');el_tail.remove('jumper');el_head.remove('jumper');el_leg.remove('jumper');el_arm.remove('jumper');el_arm_back.remove('jumper');el_leg_back.remove('jumper')},1000);
+            }
+            function initialize() {
+            
+                var getUrlVars = (function() {
+                    var vars;
+                    return function() {
+                        if(vars !== undefined) return vars;
+                        vars = {};
+                        window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                            vars[key] = value;
+                        });
+                        return vars;
+                    }
+                })();
+            
+                var commands = ['jump', 'dance', 'ninja kick', 'wag', 'speak'];
+                document.getElementById("speechInput").addEventListener("webkitspeechchange", function(event) {
+                    if (event.results.length > 0) {
+                        var userCmd = event.results[0]['utterance'];
+                        console.log(userCmd);
+                        // One of our commands
+                        if (commands.indexOf(userCmd) >= 0) {
+                            doAction(userCmd);
+                        }
+                    }
+                }, false);
+            }
+            
+            function doAction(command) {
+                
+                switch(command) {
+                    case 'jump':
+                        makeJump();
+                        break;
+                    case 'wag':
+                        makeWag();
+                        break;
+                    case 'dance':
+                        makeDance();
+                        break;
+                    case 'ninja kick':
+                        makeKick();
+                        break;
+                    case 'speak':
+                        makeSpeak();
+                        break;
+                }
+            }
+        </script>
+        
+    </head>
+    <body onload="initialize()">
+        <!--<div id="popup_bg">
+            <div id="popup">
+                <div id="kids_name" style="line-height:20px">
+                    <form onsubmit="setKidsName(document.getElementById('get_kids_name').value);return false;">
+                        <label for="get_kids_name">Please Enter Your Name</label>
+                        <input type="text" name="get_kids_name" id="get_kids_name"/>
+                    </form>
+                </div>
+            </div>
+        </div>-->
+        <div id="inputControl"><input id="speechInput" class="micOnly" type="text" x-webkit-speech speech/></div>
+
+        <div id="dino_canvas" style="width: 720px; height: 500px;">
+            <div id="dino_arm_back" class="dino_arm red" style="top: 81px; left: 316px;"></div>
+            <div id="dino_leg_back" class="dino_leg red" style="top: 27px; left: 122px;"></div>
+            <div id="dino_body" class="dino_body red" style="top: 54px; left: 200px;"></div>
+            <div id="dino_head" class="dino_head red" style="top: -37px; left: 279px;"></div>
+            <div id="dino_arm" class="dino_arm red" style="top: 100px; left: 292px;"></div>
+            <div id="dino_leg" class="dino_leg red" style="top: 48px; left: 68px;"></div>
+            <div id="dino_tail" class="dino_tail red" style="top: 111px; left: 31px;"></div>
+        </div>
+    
+</body></html>

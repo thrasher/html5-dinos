@@ -1,0 +1,16 @@
+{
+  "name": "Dinosaur for Kids",
+  "description": "Dinosaur game for Kids",
+  "version": "1.1",
+  "icons": {
+    "128": "iconDino_128.png"
+  },
+  "app": {
+    "urls": [
+      "http://howtohtml5.com/"
+    ],
+    "launch": {
+      "web_url": "http://howtohtml5.com/html5-dinos/index.htm"
+    }
+  }
+}
